@@ -26,4 +26,6 @@ class Colours{
   static const Color navigator_color = Color(0xff979797);
   // 设计稿搜索填充
   static const Color navigator_filled = Color(0xfff7f9fc);
+  // 设计稿工作区
+  static const Color workspace = Color(0x4fececec);
 }

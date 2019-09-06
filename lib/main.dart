@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colours.app_main,
         backgroundColor: Colours.white_color,
         brightness: Brightness.light,
+        scaffoldBackgroundColor: Colours.white_color,
         textTheme: TextTheme(
           //设置Material的默认字体样式
           body1: TextStyle(color: Colours.text_color, fontSize: FontSize.middle_size),

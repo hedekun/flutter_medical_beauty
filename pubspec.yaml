@@ -90,3 +90,5 @@ flutter:
     - assets/images/
     - assets/images/home/
     - assets/images/banner/
+    - assets/images/feature/
+    - assets/images/position/

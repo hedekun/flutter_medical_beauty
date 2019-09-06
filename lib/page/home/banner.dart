@@ -11,7 +11,7 @@ class BannerPage extends StatelessWidget {
       alignment: Alignment.center,
       child: Container(
         width: ScreenUtil().setWidth(343),
-        height: ScreenUtil().setHeight(154),
+        height: ScreenUtil().setHeight(164),
         color: Colours.white_color,
         padding: EdgeInsets.only(top: 12),
         child: Swiper(
