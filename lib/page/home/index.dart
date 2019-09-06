@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_medical_beauty/page/home/navigation.dart';
 
-class HomePage extends StatelessWidget {
+import 'package:flutter_medical_beauty/page/home/banner.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
+
+  @protected
+  bool get wantKeepAlive=>true;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
-        children: <Widget>[
-          NavigationPage()
+    return SafeArea(
+      child: CustomScrollView(
+        physics: ScrollPhysics(),
+        slivers: <Widget>[
+          SliverToBoxAdapter(child: NavigationPage()),
+          SliverToBoxAdapter(child: BannerPage())
         ],
-      )
+      ),
     );
   }
 }
