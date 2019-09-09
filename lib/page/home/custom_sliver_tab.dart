@@ -22,11 +22,11 @@ class _SliverPersistentTabBarPage extends State<SliverPersistentTabBarPage> with
   @override
   Widget build(BuildContext context) {
     return SliverPersistentHeader(
-      floating: true,
+//      floating: true,
       pinned: true,
       delegate: CustomSliverPersistentHeaderDelegate(
-          max: 60,
-          min: 60,
+          max: 48,
+          min: 48,
           child: TabBar(
               tabs: widget.tabs,
               controller: widget.tabController,

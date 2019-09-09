@@ -6,6 +6,7 @@ import 'package:flutter_medical_beauty/page/home/banner.dart';
 import 'package:flutter_medical_beauty/page/home/feature.dart';
 import 'package:flutter_medical_beauty/page/home/position.dart';
 import 'package:flutter_medical_beauty/page/home/custom_sliver_tab.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -56,7 +57,8 @@ class _HomePageState extends State<HomePage>
       child: CustomScrollView(
         physics: ScrollPhysics(),
         slivers: <Widget>[
-          SliverToBoxAdapter(child: NavigationPage()),
+          SliverPersistentHeader(pinned: true,
+          delegate: CustomSliverPersistentHeaderDelegate(max: ScreenUtil().setHeight(44), min: ScreenUtil().setHeight(44), child: NavigationPage()),),
           SliverToBoxAdapter(child: BannerPage()),
           SliverToBoxAdapter(child: SizedBox(height: 12)),
           SliverFeaturePage(),
