@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_medical_beauty/common/util/image_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_medical_beauty/store/data/index.dart';
 
 class SliverFeaturePage extends StatelessWidget {
-  final List<String> nameList= ['玻尿酸', '肉毒素', '眼部微整', '鼻综合', '面部轮廓', '自体脂肪', '胸部整形', '美体整形'];
+  final List<String> nameList= home_feature_list;
   @override
   Widget build(BuildContext context) {
     return SliverGrid(

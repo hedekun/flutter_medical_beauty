@@ -7,6 +7,8 @@ import 'package:flutter_medical_beauty/page/home/feature.dart';
 import 'package:flutter_medical_beauty/page/home/position.dart';
 import 'package:flutter_medical_beauty/page/home/custom_sliver_tab.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_medical_beauty/page/home/tabview/recommend.dart';
+import 'package:flutter_medical_beauty/store/data/index.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,26 +20,9 @@ class _HomePageState extends State<HomePage>
         AutomaticKeepAliveClientMixin<HomePage>,
         SingleTickerProviderStateMixin {
   TabController _tabController;
-  final List<Tab> tabs = [
-    Tab(
-      text: '推荐',
-    ),
-    Tab(
-      text: '眼部',
-    ),
-    Tab(
-      text: '鼻综合',
-    ),
-    Tab(
-      text: '玻尿酸',
-    ),
-    Tab(
-      text: '美体塑形',
-    ),
-    Tab(
-      text: '面部',
-    ),
-  ];
+  final List<Tab> tabs = home_tabs.map((item) => Tab(text: item)).toList();
+
+  final List<Widget> tabViewList = [RecommendPage(), RecommendPage(), RecommendPage(),RecommendPage(),RecommendPage(),RecommendPage()];
 
 
   @override
@@ -54,28 +39,35 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     super.build(context);
     return SafeArea(
-      child: CustomScrollView(
-        physics: ScrollPhysics(),
-        slivers: <Widget>[
-          SliverPersistentHeader(pinned: true,
-          delegate: CustomSliverPersistentHeaderDelegate(max: ScreenUtil().setHeight(44), min: ScreenUtil().setHeight(44), child: NavigationPage()),),
-          SliverToBoxAdapter(child: BannerPage()),
-          SliverToBoxAdapter(child: SizedBox(height: 12)),
-          SliverFeaturePage(),
-          SliverToBoxAdapter(child: PositionPage()),
-          SliverToBoxAdapter(child: Container(
-            color: Colours.workspace,
-            width: double.infinity,
-            height: 20,
-          ),),
-          SliverPersistentTabBarPage(tabs: tabs, tabController: _tabController,),
-          SliverToBoxAdapter(child: Container(
-            color: Colours.workspace,
-            width: double.infinity,
-            height: 2000,
-          ),),
-        ],
+      child: NestedScrollView(
+        headerSliverBuilder: _headerSliverBuilder,
+        body: TabBarView(controller: _tabController ,children: tabViewList),
       ),
     );
+  }
+
+  List<Widget> _headerSliverBuilder(
+      BuildContext context, bool innerBoxIsScrolled) {
+    return <Widget>[
+      SliverPersistentHeader(
+        pinned: true,
+        delegate: CustomSliverPersistentHeaderDelegate(
+            max: ScreenUtil().setHeight(44),
+            min: ScreenUtil().setHeight(44),
+            child: NavigationPage()),
+      ),
+      SliverToBoxAdapter(child: BannerPage()),
+      SliverToBoxAdapter(child: SizedBox(height: 12)),
+      SliverFeaturePage(),
+      SliverToBoxAdapter(child: PositionPage()),
+      SliverToBoxAdapter(
+        child: Container(
+          color: Colours.workspace,
+          width: double.infinity,
+          height: 20,
+        ),
+      ),
+      SliverPersistentTabBarPage(tabs: tabs, tabController: _tabController,),
+    ];
   }
 }

@@ -28,4 +28,10 @@ class Colours{
   static const Color navigator_filled = Color(0xfff7f9fc);
   // 设计稿工作区
   static const Color workspace = Color(0x4fececec);
+  // 设计稿主页推荐
+  static const Color recommend_title = Color(0xff9DA6B3);
+  // 设计稿填充
+  static const Color recommend_fill = Color(0xffF7F9FC);
+
+  static const Color recommend_fill_color = Color(0xff585D66);
 }

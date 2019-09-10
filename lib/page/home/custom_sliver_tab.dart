@@ -27,16 +27,20 @@ class _SliverPersistentTabBarPage extends State<SliverPersistentTabBarPage> with
       delegate: CustomSliverPersistentHeaderDelegate(
           max: 48,
           min: 48,
-          child: TabBar(
-              tabs: widget.tabs,
-              controller: widget.tabController,
-              isScrollable: true,
-              indicatorColor: Colours.app_main,
-              labelColor: Colours.app_main,
-              labelStyle: TextStyle(fontSize: 16),
-              unselectedLabelColor: Colours.text_color,
-              unselectedLabelStyle: TextStyle(fontSize: 15),
-              indicatorSize: TabBarIndicatorSize.label)),
+          child: Container(
+            width: double.infinity,
+            color: Colours.white_color,
+            child: TabBar(
+                tabs: widget.tabs,
+                controller: widget.tabController,
+                isScrollable: true,
+                indicatorColor: Colours.app_main,
+                labelColor: Colours.app_main,
+                labelStyle: TextStyle(fontSize: 16),
+                unselectedLabelColor: Colours.text_color,
+                unselectedLabelStyle: TextStyle(fontSize: 15),
+                indicatorSize: TabBarIndicatorSize.label),
+          )),
     );
   }
 }

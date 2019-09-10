@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         textTheme: TextTheme(
           //设置Material的默认字体样式
           body1: TextStyle(color: Colours.text_color, fontSize: FontSize.middle_size),
+          body2: TextStyle(color: Colours.recommend_title, fontSize: FontSize.small_size)
         ),
         iconTheme: IconThemeData(
           color: Colours.text_color,
