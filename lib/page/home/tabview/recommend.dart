@@ -9,35 +9,42 @@ class RecommendPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      physics: ScrollPhysics(),
+      physics: BouncingScrollPhysics(parent: BouncingScrollPhysics()),
       slivers: <Widget>[
-        SliverList(delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
-          return Container(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: <Widget>[
-                _cardTitle(recommend_card_data[index]),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: loadAssetImage(recommend_card_data[index]['url'], width: ScreenUtil.screenWidth - 32, fit: BoxFit.fitWidth),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child:Text(recommend_card_data[index]['desc'], style: TextStyle(),maxLines: 2,overflow: TextOverflow.ellipsis,),
-                ),
-                _content(recommend_card_data[index]),
-                _bottom(context, recommend_card_data[index]),
-                Container(
-                  color: Colours.workspace,
-                  width: double.infinity,
-                  height: 20,
-                ),
-              ],
-            ),
-          );
-        }, childCount: recommend_card_data.length),)
+        SliverListRecommend()
       ],
     );
+  }
+}
+
+class SliverListRecommend extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
+      return Container(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: <Widget>[
+            _cardTitle(recommend_card_data[index]),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: loadAssetImage(recommend_card_data[index]['url'], width: ScreenUtil.screenWidth - 32, fit: BoxFit.fitWidth),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child:Text(recommend_card_data[index]['desc'], style: TextStyle(),maxLines: 2,overflow: TextOverflow.ellipsis,),
+            ),
+            _content(recommend_card_data[index]),
+            _bottom(context, recommend_card_data[index]),
+            Container(
+              color: Colours.workspace,
+              width: double.infinity,
+              height: 20,
+            ),
+          ],
+        ),
+      );
+    }, childCount: recommend_card_data.length));
   }
 
   Widget _cardTitle(data) {
@@ -67,8 +74,8 @@ class RecommendPage extends StatelessWidget {
           width: 66,
           height: 26,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(2)),
-            border: Border.all(color: Colours.app_main, width: 1)
+              borderRadius: BorderRadius.all(Radius.circular(2)),
+              border: Border.all(color: Colours.app_main, width: 1)
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

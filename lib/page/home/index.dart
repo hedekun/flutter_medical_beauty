@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage>
     return SafeArea(
       child: NestedScrollView(
         headerSliverBuilder: _headerSliverBuilder,
-        body: TabBarView(controller: _tabController ,children: tabViewList),
+        body: TabBarView(physics: BouncingScrollPhysics(), controller: _tabController ,children: tabViewList),
       ),
     );
   }
