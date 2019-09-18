@@ -34,4 +34,8 @@ class Colours{
   static const Color recommend_fill = Color(0xffF7F9FC);
 
   static const Color recommend_fill_color = Color(0xff585D66);
+
+  static const Color border_color = Color(0xffEBEDF0);
+
+  static const Color more_answer_color = Color(0xff5283CC);
 }
