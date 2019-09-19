@@ -26,30 +26,34 @@ class _BottomAppBarItemState extends State<BottomAppBarItem> {
           widget.onChanged(widget.index);
         });
       },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          // 切换的时候过渡效果
-          AnimatedSwitcher(
-              duration: const Duration(milliseconds: 100),
-              transitionBuilder: (Widget child, Animation<double> animation) {
-                //执行缩放动画
-                return ScaleTransition(child: child, scale: animation);
-              },
-              child: Padding(
-                key: ValueKey('${widget.index}$_url'),
-                padding: EdgeInsets.only(top: 2),
-                child: Image(
-                  image: AssetImage(_url),
-                  width: 24,
-                  height: 24,
-                  fit: BoxFit.cover,
-                ),
-              )
-          ),
-          widget.currentIndex == widget.index ? Text(widget.title, style: TextStyle(fontSize: FontSize.small_size, color: Theme.of(context).primaryColor)) : Text(widget.title, style: TextStyle(fontSize: FontSize.small_size))
-        ],
+      child: Container(
+        width: MediaQuery.of(context).size.width / 5,
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            // 切换的时候过渡效果
+            AnimatedSwitcher(
+                duration: const Duration(milliseconds: 100),
+                transitionBuilder: (Widget child, Animation<double> animation) {
+                  //执行缩放动画
+                  return ScaleTransition(child: child, scale: animation);
+                },
+                child: Padding(
+                  key: ValueKey('${widget.index}$_url'),
+                  padding: EdgeInsets.only(top: 2),
+                  child: Image(
+                    image: AssetImage(_url),
+                    width: 24,
+                    height: 24,
+                    fit: BoxFit.cover,
+                  ),
+                )
+            ),
+            widget.currentIndex == widget.index ? Text(widget.title, style: TextStyle(fontSize: FontSize.small_size, color: Theme.of(context).primaryColor)) : Text(widget.title, style: TextStyle(fontSize: FontSize.small_size))
+          ],
+        ),
       ),
     );
   }
