@@ -4,25 +4,29 @@ import 'package:flutter_medical_beauty/common/style/colours.dart';
 import 'package:flutter_medical_beauty/common/style/fontsize.dart';
 import 'package:flutter_medical_beauty/common/util/image_util.dart';
 import 'package:flutter_medical_beauty/store/data/index.dart';
+import 'package:flutter_medical_beauty/common/util/scroll_behavior.dart';
 
 class RecommendPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      physics: BouncingScrollPhysics(),
-      slivers: <Widget>[
-        SliverToBoxAdapter(
-          child: RecommendDoctorTitle(),
-        ),
-        SliverToBoxAdapter(
-          child: RecommendDoctorContext(),
-        ),
-        SliverToBoxAdapter(
-          child: RecommendTopicTitle(),
-        ),
-        SliverTopicContext(),
-        SliverListRecommend()
-      ],
+    return ScrollConfiguration(
+      behavior: MyBehavior(),
+      child: CustomScrollView(
+        physics: ClampingScrollPhysics(),
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: RecommendDoctorTitle(),
+          ),
+          SliverToBoxAdapter(
+            child: RecommendDoctorContext(),
+          ),
+          SliverToBoxAdapter(
+            child: RecommendTopicTitle(),
+          ),
+          SliverTopicContext(),
+          SliverListRecommend()
+        ],
+      ),
     );
   }
 }
