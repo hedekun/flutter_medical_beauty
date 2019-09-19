@@ -38,4 +38,6 @@ class Colours{
   static const Color border_color = Color(0xffEBEDF0);
 
   static const Color more_answer_color = Color(0xff5283CC);
+
+  static const Color shop_tag_color = Color(0xff3187FF);
 }
